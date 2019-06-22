@@ -27,6 +27,8 @@ CITIES = [
     'CHICAGO'
 ]
 
+CITY = 'PHOENIX'
+
 INTERVAL_1 = list(range(1961, 2006))
 INTERVAL_2 = list(range(2006, 2016))
 
@@ -180,7 +182,7 @@ def evaluate_models_on_training(x, y, models):
         pylab.plot(xVals, estYVals, label="Fit of degree " + str(len(model))\
                    + ", R2 = " + str(round(error, 3)))
         pylab.legend(loc = "best")
-        pylab.title("Temperatures by Year")
+        pylab.title("Temperatures by Year- " + CITY)
         pylab.xlabel("Year")
         pylab.ylabel("Temperature")
         
@@ -190,7 +192,7 @@ raw_data = Climate('data.csv')
 y = []
 x = INTERVAL_1
 for year in INTERVAL_1:
-    y.append(raw_data.get_daily_temp('BOSTON', 1, 10, year))
+    y.append(raw_data.get_daily_temp(CITY, 1, 10, year))
 
 
 models = generate_models(x, y, [1])
@@ -201,7 +203,7 @@ x2 = INTERVAL_2
 y = []
 
 for year in INTERVAL_1:
-    y.append(np.mean(raw_data.get_yearly_temp('PHOENIX', year)))
+    y.append(np.mean(raw_data.get_yearly_temp(CITY, year)))
 
 models = generate_models(x, y, [1])
 evaluate_models_on_training(x, y, models)
