@@ -1,4 +1,4 @@
-# ClimateChangeTrend
+# ClimateChange
 A regression model based on historical temperature data for 20 US Cities
 
 ### Running the program:
